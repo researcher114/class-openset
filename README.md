@@ -4,11 +4,11 @@
 
 ### Semi-Supervised Framework
 
-The environment for the main semi-supervised framework is configured according to the instructions in the [DSL repository](https://github.com/chenbinghui1/dsl). Please follow the setup instructions provided there to install the necessary dependencies and configure your environment.
+The environment for the main semi-supervised framework is configured according to the instructions in the [DSL](https://github.com/chenbinghui1/dsl). Please follow the setup instructions provided there to install the necessary dependencies and configure your environment.
 
 ### OOD Detector
 
-For the OOD detector, both the environment and the dataset are configured as detailed in the [OpenDet2 repository](https://github.com/csuhan/opendet2). Refer to that repository for guidance on environment setup, dependency installation, and dataset preparation.
+For the OOD detector, both the environment and the dataset are configured as detailed in the [OpenDet](https://github.com/csuhan/opendet2). Refer to that repository for guidance on environment setup, dependency installation, and dataset preparation.
 
 ## Procedure
 
@@ -36,7 +36,7 @@ tar -xf VOCtrainval_11-May-2012.tar
 #       - ...
 ```
 
-### 2. Convert data format as [DSL repository](https://github.com/chenbinghui1/dsl) did
+### 2. Convert data format as [DSL](https://github.com/chenbinghui1/dsl) did
 
 ### 3. Train as steps4-steps7 which are used in Partially Labeled data protocol
 
