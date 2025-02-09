@@ -4,11 +4,20 @@
 
 ### Semi-Supervised Framework
 
-The environment for the main semi-supervised framework is configured according to the instructions in the [DSL](https://github.com/chenbinghui1/dsl). Please follow the setup instructions provided there to install the necessary dependencies and configure your environment.
+```bash
+pytorch>=1.8.0
+cuda 10.2
+python>=3.8
+mmcv-full 1.3.10
+```
 
 ### OOD Detector
 
-We use opendet as OOD detector, both the environment and the dataset are configured as detailed in the [OpenDet](https://github.com/csuhan/opendet2). Refer to that repository for guidance on environment setup, dependency installation, and dataset preparation.
+```
+python=3.8
+pytorch=1.8.1
+detectron2==0.5
+```
 
 ## Procedure
 
