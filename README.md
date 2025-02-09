@@ -12,7 +12,9 @@ We use opendet as OOD detector, both the environment and the dataset are configu
 
 ## Procedure
 
-### 1. Download VOC data and coco dataset
+### I. Get original pseudo-labels
+
+#### 1. Download VOC data and coco dataset
 Download VOC dataset to dir xx and unzip it, we will get (`VOCdevkit/`)
 ```bash
 cd ${project_root_dir}/ori_data
@@ -35,7 +37,7 @@ tar -xf VOCtrainval_11-May-2012.tar
 #       - JPEGImages
 #       - ...
 ```
-
+Download coco dataset and unzip it
 
 ```bash
 mkdir ori_data/coco
@@ -64,15 +66,47 @@ unzip -q unlabeled2017.zip -d .
 #     - ...
 ```
 
-### 2.Prepare data
+#### 2. Prepare data
 
-Copy the images and annotations from **VOC07 `train`** and **VOC12 `trainval`** into the corresponding directories of the **VOC2007** folder as the labeled training set.  
-Copy the images from **COCO `Unlabel`** into the corresponding directory of the **VOC2012** folder as the unlabeled training set.
+- Copy the images and annotations from **VOC07 `train`** and **VOC12 `trainval`** into the corresponding directories of the **VOC2007** folder as the labeled training set.  
+- Copy the images from **COCO `Unlabel`** into the corresponding directory of the **VOC2012** folder as the unlabeled training set.
 
 
-### 2. Convert VOC and COCO data format respectively as [DSL](https://github.com/chenbinghui1/dsl) did
+#### 3. Train supervised baseline model as shown in [DSL](https://github.com/chenbinghui1/dsl)
+```bash
+cd ${project_root_dir}/DSL
+./demo/model_train/baseline_voc.sh
+```
+#### 4. Generate initial pseudo-labels for unlabeled images(1/2)
+Generate the initial pseudo-labels for unlabeled images via (`tools/inference_unlabeled_coco_data.sh`): please change the corresponding list file path of unlabeled data in the config file, and the model path in tools/inference_unlabeled_coco_data.sh.
+```bash
+./tools/inference_unlabeled_coco_data.sh
+```
 
-### 3. Train as steps4-steps7 which are used in Partially Labeled data protocol in [DSL](https://github.com/chenbinghui1/dsl)
+Then you will obtain (`workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json`) which contains the pseudo-labels.
+
+#### 5. Generate initial pseudo-labels for unlabeled images(2/2)
+Use (`tools/generate_unlabel_annos_coco.py`) to convert the produced (`epoch_xxx.pth-unlabeled.bbox.json`) above to DSL-style annotations
+```bash
+python3 tools/generate_unlabel_annos_coco.py \ 
+          --input_path workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json \
+          --input_list data_list/coco_semi/semi_supervised/instances_train2017.${seed}@${percent}-unlabeled.json \
+          --cat_info ${project_root_dir}/data/semicoco/mmdet_category_info.json \
+          --thres 0.1
+```
+
+You will obtain (`workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json_thres0.1_annos/`) dir which contains the original pseudo-labels.
+
+### II. Get OOD pseudo-labels
+
+#### 1. Prepare data as shown in [OpenDet](https://github.com/csuhan/opendet2)
+
+#### 2. Training OOD datector
+
+The training process is the same as detectron2.
+```
+python tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn_R_50_FPN_3x_opendet.yaml
+```
 
 ## Testing
 
