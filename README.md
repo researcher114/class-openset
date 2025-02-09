@@ -8,7 +8,7 @@ The environment for the main semi-supervised framework is configured according t
 
 ### OOD Detector
 
-For the OOD detector, both the environment and the dataset are configured as detailed in the [OpenDet](https://github.com/csuhan/opendet2). Refer to that repository for guidance on environment setup, dependency installation, and dataset preparation.
+We use opendet as OOD detector, both the environment and the dataset are configured as detailed in the [OpenDet](https://github.com/csuhan/opendet2). Refer to that repository for guidance on environment setup, dependency installation, and dataset preparation.
 
 ## Procedure
 
