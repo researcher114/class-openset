@@ -26,7 +26,7 @@ detectron2==0.5
 #### 1. Download VOC data and coco dataset
 Download VOC dataset to dir xx and unzip it, we will get (`VOCdevkit/`)
 ```bash
-cd ${project_root_dir}/ori_data
+
 wget http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtrainval_06-Nov-2007.tar
 wget http://host.robots.ox.ac.uk/pascal/VOC/voc2007/VOCtest_06-Nov-2007.tar
 wget http://host.robots.ox.ac.uk/pascal/VOC/voc2012/VOCtrainval_11-May-2012.tar
@@ -49,9 +49,6 @@ tar -xf VOCtrainval_11-May-2012.tar
 Download coco dataset and unzip it
 
 ```bash
-mkdir ori_data/coco
-cd ori_data/coco
-
 wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
 wget http://images.cocodataset.org/zips/train2017.zip
 wget http://images.cocodataset.org/zips/val2017.zip
