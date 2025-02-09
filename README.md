@@ -101,12 +101,24 @@ You will obtain (`workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json_thres0.1_ann
 
 #### 1. Prepare data as shown in [OpenDet](https://github.com/csuhan/opendet2)
 
-#### 2. Training OOD datector
+#### 2. Training OOD detector
 
 The training process is the same as detectron2.
 ```
 python tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn_R_50_FPN_3x_opendet.yaml
 ```
+
+#### 3. Produce OOD pseudo-labels
+
+- Replace the original file at `/home/anaconda3/envs/opendet/lib/python3.8/site-packages/detectron2/evaluation/evaluator.py` with the `evaluator.py` from this repository.
+
+- Then, run the following command:
+
+  ```bash
+  python tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn_R_50_FPN_3x_opendet.yaml \
+  --eval-only MODEL.WEIGHTS output/faster_rcnn_R_50_FPN_3x_opendet/model_final.pth
+   ```
+The test dataset should be the one you want to perform predictions on, it should be the images from **COCO `Unlabel`**. After execution, pseudo-labels for **COCO `Unlabel`** part will be generated.
 
 ## Testing
 
