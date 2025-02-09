@@ -187,7 +187,7 @@ def inference_on_dataset(
             # print(outputs)
             
             
-            # 进行伪标签的生成
+            
             image_ids = [item['image_id'] for item in inputs]
             image_ids = image_ids[0]
             heights = [item['height'] for item in inputs]
@@ -195,16 +195,16 @@ def inference_on_dataset(
             widths = [item['width'] for item in inputs]
             widths = widths[0]
             result = outputs[0]['instances']
-            # 获取预测框坐标
+            
             pred_boxes = result.get('pred_boxes').tensor.tolist()
             # pred_boxes = result.get('pred_boxes').tensor.numpy()
             # 获取置信度分数
             scores = result.get('scores').tolist()
 
-            # 获取预测类别
+            
             pred_classes = result.get('pred_classes').tolist()
             
-            # #写成DSL .json格式
+            # #DSL .json format
             json_data = {
                 "imageName": f"full/{image_ids}.jpg",
                 "targetNum": 0,
@@ -214,7 +214,7 @@ def inference_on_dataset(
                 "masks": []
             }
 
-            # 循环处理每个预测框
+            
             for i in range(len(pred_boxes)):
                 if scores[i] > 0.8:
                     rect = [
@@ -231,19 +231,19 @@ def inference_on_dataset(
                 else:
                     continue
 
-            # 构建保存的 JSON 文件路径
+          
             json_file_path = os.path.join('/home/***/opendet/opendet2/inference-result/voc_coco/07train+12trainval/', f"{image_ids}.jpg.json")
             if not os.path.exists(json_file_path):
-                # 如果不存在，创建路径
+               
                 os.makedirs(os.path.dirname(json_file_path), exist_ok=True)
 
-            # 保存 JSON 数据到文件
+
             with open(json_file_path, 'w', encoding='utf-8') as json_file:
                 json.dump(json_data, json_file, ensure_ascii=False, indent=4)
             
             
             
-            # # 写成pascal-voc .xml格式的标注
+            
             # annotation = ET.Element('annotation')
             # ET.SubElement(annotation, 'folder').text = 'VOC2007'
             # ET.SubElement(annotation, 'filename').text = str(image_ids)
@@ -266,7 +266,7 @@ def inference_on_dataset(
             #         ET.SubElement(bbox, 'ymax').text = str(int(pred_boxes[i][3]))
             #     else:
             #         continue
-            # # 保存VOC格式标注文件和图像文件
+            # # save voc format data
             # xml_file = os.path.join('/home/**/DSL/via_to_voc/pseudo_produced_by_opendet_VOCformat/224train_16000iter_r2(224+1828probyr1)/', image_ids + '.xml')
             # with open(xml_file, 'w', encoding='utf-8') as f:
             #     f.write(ET.tostring(annotation, encoding='unicode'))
