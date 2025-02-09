@@ -120,9 +120,10 @@ python tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn_R_50_FP
    ```
 The test dataset should be the one you want to perform predictions on, it should be the images from **COCO `Unlabel`**. After execution, pseudo-labels for **COCO `Unlabel`** part will be generated.
 
-## Testing
+### III. Hybrid lables
 
-To test the model, run the following command:
+#### 1.Mix the two kinds of labels above
 
 ```bash
-python ./test.py
+  python merge_label.py
+```
