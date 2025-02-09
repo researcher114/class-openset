@@ -12,7 +12,7 @@ We use opendet as OOD detector, both the environment and the dataset are configu
 
 ## Procedure
 
-### 1. Download VOC data
+### 1. Download VOC data and coco dataset
 Download VOC dataset to dir xx and unzip it, we will get (`VOCdevkit/`)
 ```bash
 cd ${project_root_dir}/ori_data
@@ -36,9 +36,43 @@ tar -xf VOCtrainval_11-May-2012.tar
 #       - ...
 ```
 
-### 2. Convert data format as [DSL](https://github.com/chenbinghui1/dsl) did
 
-### 3. Train as steps4-steps7 which are used in Partially Labeled data protocol
+```bash
+mkdir ori_data/coco
+cd ori_data/coco
+
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+wget http://images.cocodataset.org/zips/train2017.zip
+wget http://images.cocodataset.org/zips/val2017.zip
+wget http://images.cocodataset.org/zips/unlabeled2017.zip
+
+unzip annotations_trainval2017.zip -d .
+unzip -q train2017.zip -d .
+unzip -q val2017.zip -d .
+unzip -q unlabeled2017.zip -d .
+
+# resulting format
+# ori_data/coco
+#   - train2017
+#     - xxx.jpg
+#   - val2017
+#     - xxx.jpg
+#   - unlabled2017
+#     - xxx.jpg
+#   - annotations
+#     - xxx.json
+#     - ...
+```
+
+### 2.Prepare data
+
+Copy the images and annotations from **VOC07 `train`** and **VOC12 `trainval`** into the corresponding directories of the **VOC2007** folder as the labeled training set.  
+Copy the images from **COCO `Unlabel`** into the corresponding directory of the **VOC2012** folder as the unlabeled training set.
+
+
+### 2. Convert VOC and COCO data format respectively as [DSL](https://github.com/chenbinghui1/dsl) did
+
+### 3. Train as steps4-steps7 which are used in Partially Labeled data protocol in [DSL](https://github.com/chenbinghui1/dsl)
 
 ## Testing
 
