@@ -127,3 +127,9 @@ The test dataset should be the one you want to perform predictions on, it should
 ```bash
   python merge_label.py
 ```
+
+Then replace original labels with hybrid labels
+
+### IV. Synthetic data
+
+
