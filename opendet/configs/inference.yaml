@@ -17,5 +17,5 @@ SOLVER:
   WARMUP_ITERS: 800
   AMP:
     ENABLED: True
-OUTPUT_DIR: "/home/lingxiao/lzy/opendet/opendet2/output/inference-trash"
+OUTPUT_DIR: "/home/opendet/opendet2/output/inference-trash"
 # UPLOSS.WEIGHT: former two are 0.5, the last is 1.0
