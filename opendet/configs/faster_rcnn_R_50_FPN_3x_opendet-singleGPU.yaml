@@ -16,5 +16,5 @@ SOLVER:
   WARMUP_ITERS: 800
   AMP:
     ENABLED: True
-OUTPUT_DIR: "/home/lingxiao/lzy/opendet/opendet2/output/faster_rcnn_R_50_FPN_3x_opendet-8xrounds-2007trainval"
+OUTPUT_DIR: "/home/opendet/opendet2/output/faster_rcnn_R_50_FPN_3x_opendet-8xrounds-2007trainval"
 # UPLOSS.WEIGHT: former two are 0.5, the last is 1.0
