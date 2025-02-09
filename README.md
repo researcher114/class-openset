@@ -105,7 +105,7 @@ You will obtain (`workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json_thres0.1_ann
 
 The training process is the same as detectron2.
 ```
-python tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn_R_50_FPN_3x_opendet.yaml
+python opendet/tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn_R_50_FPN_3x_opendet.yaml
 ```
 
 #### 3. Produce OOD pseudo-labels
@@ -125,7 +125,7 @@ The test dataset should be the one you want to perform predictions on, it should
 #### 1.Mix the two kinds of labels above
 
 ```bash
-  python merge_label.py
+  python tools/merge_label.py
 ```
 
 Then replace original labels with hybrid labels
