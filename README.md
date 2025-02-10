@@ -62,7 +62,7 @@ Download coco dataset and unzip it
 
 #### 3. Train supervised baseline model as shown in DSL
 ```bash
-cd ${project_root_dir}/DSL
+cd DSL
 ./demo/model_train/baseline_voc.sh
 ```
 #### 4. Generate initial pseudo-labels for unlabeled images(1/2)
