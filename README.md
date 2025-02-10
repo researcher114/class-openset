@@ -60,7 +60,7 @@ Download coco dataset and unzip it
 - Copy the images from **COCO `Unlabel`** into the corresponding directory of the **VOC2012** folder as the unlabeled training set.
 
 
-#### 3. Train supervised baseline model as shown in [DSL](https://github.com/chenbinghui1/dsl)
+#### 3. Train supervised baseline model as shown in DSL
 ```bash
 cd ${project_root_dir}/DSL
 ./demo/model_train/baseline_voc.sh
@@ -87,7 +87,7 @@ You will obtain (`workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json_thres0.1_ann
 
 ### II. Get OOD pseudo-labels
 
-#### 1. Prepare data as shown in [OpenDet](https://github.com/csuhan/opendet2)
+#### 1. Prepare data as shown in OpenDet
 
 #### 2. Training OOD detector
 
