@@ -118,6 +118,10 @@ The test dataset should be the one you want to perform predictions on, it should
 
 Then replace original labels with hybrid labels
 
-### IV. Synthetic data
+### IV. Training
+
+```bash
+./demo/model_train/unlabel_train.sh
+```
 
 
