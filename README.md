@@ -121,7 +121,7 @@ Then replace original labels with hybrid labels
 ### IV. Training
 
 ```bash
-./demo/model_train/unlabel_train.sh
+./model_train/semi-voc.sh
 ```
 
 
