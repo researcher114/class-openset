@@ -76,11 +76,7 @@ Then you will obtain (`workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json`) which
 #### 5. Generate initial pseudo-labels for unlabeled images(2/2)
 Use (`tools/generate_unlabel_annos_coco.py`) to convert the produced (`epoch_xxx.pth-unlabeled.bbox.json`) above to DSL-style annotations
 ```bash
-python3 tools/generate_unlabel_annos_coco.py \ 
-          --input_path workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json \
-          --input_list data_list/coco_semi/semi_supervised/instances_train2017.${seed}@${percent}-unlabeled.json \
-          --cat_info ${project_root_dir}/data/semicoco/mmdet_category_info.json \
-          --thres 0.1
+python3 tools/generate_unlabel_annos_coco.py --input_path workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json --input_list data_list/coco_semi/semi_supervised/instances_train2017.${seed}@${percent}-unlabeled.json --cat_info ${project_root_dir}/data/semicoco/mmdet_category_info.json --thres 0.1      
 ```
 
 You will obtain (`workdir_coco/xx/epoch_xxx.pth-unlabeled.bbox.json_thres0.1_annos/`) dir which contains the original pseudo-labels.
@@ -104,7 +100,7 @@ python opendet/tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn
 
   ```bash
   python tools/train_net.py --num-gpus 2 --config-file configs/faster_rcnn_R_50_FPN_3x_opendet.yaml \
-  --eval-only MODEL.WEIGHTS output/faster_rcnn_R_50_FPN_3x_opendet/model_final.pth
+  MODEL.WEIGHTS output/faster_rcnn_R_50_FPN_3x_opendet/model_final.pth
    ```
 The test dataset should be the one you want to perform predictions on, it should be the images from **COCO `Unlabel`**. After execution, pseudo-labels for **COCO `Unlabel`** part will be generated.
 
