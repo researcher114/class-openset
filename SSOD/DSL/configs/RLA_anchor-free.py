@@ -10,7 +10,7 @@ model = dict(
         #norm_cfg=dict(type='BN', requires_grad=False),
         norm_eval=True,
         style='pytorch',
-        pretrained='/home/lingxiao/.cache/torch/hub/checkpoints/resnet50_rla_2283.pth.tar'),
+        pretrained='/home/.cache/torch/hub/checkpoints/resnet50_rla_2283.pth.tar'),
     neck=dict(
         type='FPN',
         in_channels=[256, 512, 1024, 2048],
